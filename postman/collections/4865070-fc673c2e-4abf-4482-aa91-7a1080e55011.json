@@ -176,6 +176,49 @@
 		},
 		{
 			"name": "Fake Albums",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ae8babc5-a3c9-4db6-b5f7-2d8f56e6a597",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var schema = {\"$schema\":\"http://json-schema.org/draft-07/schema#\",\"title\":\"Generated schema for Root\",\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"userId\":{\"type\":\"number\"},\"id\":{\"type\":\"number\"},\"title\":{\"type\":\"string\"}},\"required\":[\"userId\",\"id\",\"title\"]}}\r",
+							"\r",
+							"\r",
+							"pm.variables.set(\"schema\", schema);\r",
+							"try {\r",
+							"    var schema = pm.variables.get(\"schema\");\r",
+							"  \r",
+							"    if(schema) {\r",
+							"        const jsonData = pm.response.json();\r",
+							"        if(jsonData) {\r",
+							"            var Ajv = require('ajv');\r",
+							"            ajv = new Ajv({ logger: console, allErrors: true });\r",
+							"  \r",
+							"            pm.test('Schema is valid', function() {\r",
+							"                var result = tv4.validateMultiple(jsonData, schema);\r",
+							"                console.log(result);\r",
+							"                pm.expect(result.valid).to.be.true;\r",
+							"            });\r",
+							"       }\r",
+							"    }\r",
+							"}\r",
+							"catch(e) {\r",
+							"    console.log(e);\r",
+							"}\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"id": "4865070-5f9fdb81-fc37-4c97-8647-009bc633a817",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
