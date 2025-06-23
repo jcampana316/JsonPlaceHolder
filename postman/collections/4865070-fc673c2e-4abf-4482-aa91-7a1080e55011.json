@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "4865070-fc673c2e-4abf-4482-aa91-7a1080e55011",
+		"name": "JsonPlaceHolder",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get fake posts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d71358d8-f8ea-4220-bae8-36cb64039679",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"var schema =  {\"$schema\":\"http://json-schema.org/draft-07/schema#\",\"title\":\"Generated schema for Root\",\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"userId\":{\"type\":\"number\"},\"id\":{\"type\":\"number\"},\"title\":{\"type\":\"string\"},\"body\":{\"type\":\"string\"}},\"required\":[\"userId\",\"id\",\"title\",\"body\"]}}\r",
+							"\r",
+							"\r",
+							"pm.variables.set(\"schema\", schema);\r",
+							"try {\r",
+							"    var schema = pm.variables.get(\"schema\");\r",
+							"  \r",
+							"    if(schema) {\r",
+							"        const jsonData = pm.response.json();\r",
+							"        if(jsonData) {\r",
+							"            var Ajv = require('ajv');\r",
+							"            ajv = new Ajv({ logger: console, allErrors: true });\r",
+							"  \r",
+							"            pm.test('Schema is valid', function() {\r",
+							"                var result = tv4.validateMultiple(jsonData, schema);\r",
+							"                console.log(result);\r",
+							"                pm.expect(result.valid).to.be.true;\r",
+							"            });\r",
+							"       }\r",
+							"    }\r",
+							"}\r",
+							"catch(e) {\r",
+							"    console.log(e);\r",
+							"}\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "4865070-3a912aec-3790-453e-aca9-a90796cd85b0",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{jsph}}/posts",
+					"host": [
+						"{{jsph}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Post",
+			"id": "4865070-de7d199a-987c-4132-8b36-ac4b329db4cd",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\" : \"\",\r\n    \"body\" : \"\",\r\n    \"userId\" : 23\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{jsph}}/posts",
+					"host": [
+						"{{jsph}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Post",
+			"id": "4865070-30c8240b-60c2-405d-9ed2-95f04e54fe56",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\" : 100,\r\n    \"title\" : \"testing update\",\r\n    \"body\" : \"body text updated\",\r\n    \"userId\" : 908\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{jsph}}/posts/101",
+					"host": [
+						"{{jsph}}"
+					],
+					"path": [
+						"posts",
+						"101"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fake comments",
+			"id": "4865070-09581792-70b5-454d-bf68-4e3914ae87d3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{jsph}}/comments",
+					"host": [
+						"{{jsph}}"
+					],
+					"path": [
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fake Albums",
+			"id": "4865070-5f9fdb81-fc37-4c97-8647-009bc633a817",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{jsph}}/albums",
+					"host": [
+						"{{jsph}}"
+					],
+					"path": [
+						"albums"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fake Photos",
+			"id": "4865070-aa9189f6-0dcb-4f1a-aa1c-6de8a03e932d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{jsph}}/photos",
+					"host": [
+						"{{jsph}}"
+					],
+					"path": [
+						"photos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fake Todos",
+			"id": "4865070-f9ab94d6-a131-437e-a793-fc2f0e1b28fa",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{jsph}}/todos",
+					"host": [
+						"{{jsph}}"
+					],
+					"path": [
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fake Users",
+			"id": "4865070-44947337-4f39-4cce-9d55-5481a78af22c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{jsph}}/users",
+					"host": [
+						"{{jsph}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
