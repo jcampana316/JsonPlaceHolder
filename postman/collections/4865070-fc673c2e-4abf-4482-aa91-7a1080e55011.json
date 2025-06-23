@@ -152,6 +152,44 @@
 		},
 		{
 			"name": "Fake comments",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1ef96ddb-77da-4121-8717-32e0b0c6b100",
+						"exec": [
+							"var schema = {\"$schema\":\"http://json-schema.org/draft-07/schema#\",\"title\":\"Generated schema for Root\",\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"postId\":{\"type\":\"number\"},\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\"},\"email\":{\"type\":\"string\"},\"body\":{\"type\":\"string\"}},\"required\":[\"postId\",\"id\",\"name\",\"email\",\"body\"]}}\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.variables.set(\"schema\", schema);\r",
+							"try {\r",
+							"    var schema = pm.variables.get(\"schema\");\r",
+							"  \r",
+							"    if(schema) {\r",
+							"        const jsonData = pm.response.json();\r",
+							"        if(jsonData) {\r",
+							"            var Ajv = require('ajv');\r",
+							"            ajv = new Ajv({ logger: console, allErrors: true });\r",
+							"  \r",
+							"            pm.test('Schema is valid', function() {\r",
+							"                var result = tv4.validateMultiple(jsonData, schema);\r",
+							"                console.log(result);\r",
+							"                pm.expect(result.valid).to.be.true;\r",
+							"            });\r",
+							"       }\r",
+							"    }\r",
+							"}\r",
+							"catch(e) {\r",
+							"    console.log(e);\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"id": "4865070-09581792-70b5-454d-bf68-4e3914ae87d3",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
