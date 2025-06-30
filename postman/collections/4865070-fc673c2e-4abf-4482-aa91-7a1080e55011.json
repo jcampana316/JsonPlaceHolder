@@ -306,6 +306,22 @@
 		},
 		{
 			"name": "Fake Todos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bd0ec4bb-c243-42ba-993a-ee35fe42ece0",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"id": "4865070-f9ab94d6-a131-437e-a793-fc2f0e1b28fa",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
