@@ -326,7 +326,7 @@
 							"    pm.expect(jsonData.items.length).to.equal(200)\r",
 							"})\r",
 							"\r",
-							"console.log(\"length :\" + jsonData.items.length )\r",
+							"//console.log(\"length :\" + jsonData.items.length )\r",
 							"\r",
 							"\r",
 							""
