@@ -318,7 +318,18 @@
 							"\r",
 							"pm.test(\"Response time is less than 500ms\", function () {\r",
 							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
-							"});"
+							"});\r",
+							"\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test(\"Check the Items array length\", () => {\r",
+							"    pm.expect(jsonData.items.length).to.equal(200)\r",
+							"})\r",
+							"\r",
+							"console.log(\"length :\" + jsonData )\r",
+							"\r",
+							"\r",
+							""
 						],
 						"type": "text/javascript",
 						"packages": {}
