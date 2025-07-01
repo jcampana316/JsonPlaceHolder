@@ -310,12 +310,15 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "bd0ec4bb-c243-42ba-993a-ee35fe42ece0",
+						"id": "b2eb548d-89b4-4151-b2a6-6f17d868de93",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							""
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});"
 						],
 						"type": "text/javascript",
 						"packages": {}
