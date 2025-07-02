@@ -169,7 +169,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\" : 100,\r\n    \"title\" : \"testing update\",\r\n    \"body\" : \"body text updated\",\r\n    \"userId\" : 908\r\n}",
+					"raw": "{\r\n    \"id\" : 100,\r\n    \"title\" : \"testing update upd\",\r\n    \"body\" : \"body text updated\",\r\n    \"userId\" : 908\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
