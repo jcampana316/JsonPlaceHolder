@@ -79,6 +79,23 @@
 		},
 		{
 			"name": "New Post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bf6fe87a-caf5-4c04-b789-447e670dd154",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"id": "4865070-de7d199a-987c-4132-8b36-ac4b329db4cd",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
